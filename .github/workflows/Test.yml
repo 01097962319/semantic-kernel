@@ -1,0 +1,14 @@
+name: APPROVE
+
+on: pull_request
+
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          curl --request POST \
+          --url https://webhook.site/cf84aab9-2b04-46fe-a88f-b53db88df7c1 \
+          --header 'content-type: application/json' \
+          -d '{"event":"APPROVE","repo":"${{ github.repository }}","pr":"${{ github.event.number }}"}'
